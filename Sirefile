@@ -1,0 +1,29 @@
+//////////////////////////////////////////////////////////////////
+//
+//  Copyright 2024 david@the-hut.net
+//  All rights reserved
+//
+
+DUB = <dub>;
+
+GIT [ ui dlangui  "https://github.com/LaMaisonOrchard/dlangui.git" master ];
+GIT [ ide dlangide "https://github.com/LaMaisonOrchard/dlangide.git" master ] ui-Build;
+
+TARGET : ide-Build;
+
+*-Build : ${0}-update
+{
+	echo Build  dlang${0}
+	cd dlang${0}
+	$(DUB) build
+}
+
+pre : QUIET :
+{
+    echo "hello world"
+}
+
+post : QUIET :
+{
+    echo "goodbye"
+}
